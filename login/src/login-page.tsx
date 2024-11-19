@@ -1,4 +1,7 @@
+import { footer } from './footer';
 import { makeHtmlResponse, renderDocument } from './html';
+import { cwaAwuLogo } from './logo';
+
 export function loginPage(params: URLSearchParams): Response {
   const linkSent = params.has('link_sent');
   return makeHtmlResponse(
@@ -11,13 +14,17 @@ export function loginPage(params: URLSearchParams): Response {
             padding: 'var(--container-padding)',
             display: 'flex',
             flexDirection: 'column',
+            gap: 'var(--container-padding)',
             alignItems: 'stretch',
-            maxWidth: 'min(400px, 90vw)',
+            maxWidth: 'min(600px, 90vw)',
             margin: '0 auto',
           }}
         >
-          <p style={{ margin: '0' }}>
-            If your email was associated with a membership, a login link has been sent.
+          {cwaAwuLogo()}
+          <h1>Login Link Sent to Email</h1>
+          <p>
+            If the email address you entered is associated with an AWU-CWA membership, a login link has been sent to that email address.
+            Please check your email for next steps.
             <br />
             <br />
             This tab may be closed.
@@ -25,6 +32,7 @@ export function loginPage(params: URLSearchParams): Response {
             <br />
             <a href=".">Start over</a>
           </p>
+          {footer()}
         </div>
       ) : (
         <form
@@ -38,25 +46,18 @@ export function loginPage(params: URLSearchParams): Response {
             flexDirection: 'column',
             gap: 'var(--container-padding)',
             alignItems: 'stretch',
-            maxWidth: 'min(400px, 90vw)',
+            maxWidth: 'min(600px, 90vw)',
             margin: '0 auto',
           }}
         >
-          <h1
-            style={{
-              textAlign: 'center',
-              margin: 0,
-            }}
-          >
-            Login to the<br>AWU-CWA</br> dues profile
-          </h1>
-          <p
-            style={{
-              padding: '0 var(--text-padding)',
-              margin: 0,
-            }}
-          >
-            Enter the <em>personal</em> email associated with your account. We'll send you a link to log in.
+          {cwaAwuLogo()}
+          <h1>Log in to your AWU-CWA dues profile</h1>
+          <p>
+            This page allows you to update your payment method and mailing/billing address, as well as retrieve receipts of your previous
+            dues charges. This page is available to both current and former AWU-CWA members.
+          </p>
+          <p>
+            Enter the <em>personal</em> email address associated with your AWU-CWA membership. We'll send you a link to log in.
           </p>
           <input
             type="email"
@@ -81,17 +82,7 @@ export function loginPage(params: URLSearchParams): Response {
           >
             Send Login Link
           </button>
-          <p
-            style={{
-              fontSize: '0.6em',
-              opacity: 0.7,
-              padding: 'var(--text-padding)',
-            }}
-          >
-            If you encounter issues, contact the membership committee at
-            <br />
-            <a href="mailto:committee-membership@union.groups.io">committee-membership@union.groups.io</a>.
-          </p>
+          {footer()}
         </form>
       ),
     ),

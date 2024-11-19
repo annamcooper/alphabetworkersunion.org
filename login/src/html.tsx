@@ -33,9 +33,21 @@ export function renderDocument(content: VNode) {
 
             body {
               padding-top: 18px;
-              font-size: 1.4em;
+              font-size: 1.2em;
               font-family: sans-serif;
+              line-height: 1.3;
               background-color: var(--gray-2);
+            }
+
+            h1 {
+              text-align: center;
+              font-size: 1.25em;
+              margin: 0;
+            }
+
+            p {
+              margin: 0;
+              padding: 0 var(--text-padding);
             }
           `}</style>
         </head>
